@@ -1,0 +1,47 @@
+﻿@using Vidly.Models
+@model List<Movie>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Movies</title>
+</head>
+<body>
+@Html.Partial("_NavView")
+
+@if (Model.Count == 0)
+{
+    <h2> There are no movies to show.</h2>
+}
+else
+{
+    <h2> Movies </h2>
+
+    @Html.ActionLink("Add Movie", "MovieForm", null, new {@class = "btn btn-primary"})
+    <br>
+    <br/>
+    <table class="table table-bordered table-hover">
+        <colgroup>
+            <col class="col-md-3">
+            <col class="col-md-7">
+        </colgroup>
+        <thead class="thead-default">
+        <tr>
+            <th>Movie Title</th>
+            <th>Genre</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(movie.Name, @"Edit", "Movies", new {movie.Id}, null)</td>
+                <td>@movie.Genre.Name</td>
+            </tr>
+        }
+        </tbody>
+
+    </table>
+}
+
+</body>
+</html>
