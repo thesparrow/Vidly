@@ -9,8 +9,9 @@ namespace Vidly.App_Start
         public MappingProfile()
         {
             Mapper.CreateMap<Customer, CustomerDto>(); //convention based mapping 
-            Mapper.CreateMap<CustomerDto, Customer>(); 
-
+            Mapper.CreateMap<CustomerDto, Customer>();
+            Mapper.CreateMap<Movie, MovieDto>();
+            Mapper.CreateMap<MovieDto, Movie>(); 
         }
     }
 }
